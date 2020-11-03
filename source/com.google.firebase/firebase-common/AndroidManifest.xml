@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+  <application>
+    <!-- 
+      `initOrder` defaults to 100, we must be higher than 2000000000 to get this provider running before MonoRuntimeProvider.
+      This way Firebase.Crashlytics can report failures on Xamarin.Android startup.
+      see: https://github.com/xamarin/xamarin-android/blob/aaa37c3df94490ee9befb8381f4dd7aa18226355/src/Xamarin.Android.Build.Tasks/Utilities/ManifestDocument.cs#L667-L679
+    -->
+    <provider
+        tools:replace="android:initOrder"
+        android:name="com.google.firebase.provider.FirebaseInitProvider"
+        android:authorities="${applicationId}.firebaseinitprovider"
+        android:exported="false"
+        android:initOrder="2000001000"
+    />
+  </application>
+</manifest>

@@ -177,6 +177,9 @@
         <Link>Additions/%(RecursiveDir)/%(Filename)%(Extension)</Link>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\source\@(Model.MavenGroupId)\@(Model.Name)\AndroidManifest.xml" Condition="Exists('..\..\source\@(Model.MavenGroupId)\@(Model.Name)\AndroidManifest.xml')" Pack="true" PackagePath="manifest\@(targetFrameworkMoniker)" />
+  </ItemGroup>
 
   <ItemGroup>
     <TransformFile Include="..\..\source\Metadata.Common.xml" >

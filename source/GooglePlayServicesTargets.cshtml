@@ -29,6 +29,10 @@
       if (art.ProguardFile != null) {
     <ProguardConfiguration Include="$(MSBuildThisFileDirectory)..\..\proguard\@(targetFrameworkMoniker)\proguard.txt" />
       }
+    <ExtractedManifestDocuments
+        Condition=" '$(FirebaseExcludeManifest)' != 'true' and Exists('$(MSBuildThisFileDirectory)..\..\manifest\@(targetFrameworkMoniker)\AndroidManifest.xml')"
+        Include="$(MSBuildThisFileDirectory)..\..\manifest\@(targetFrameworkMoniker)\AndroidManifest.xml"
+    />>
     }
   </ItemGroup>
   <PropertyGroup>
